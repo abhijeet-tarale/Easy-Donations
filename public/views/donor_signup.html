@@ -1,0 +1,47 @@
+<html>
+<head>
+  <!-- bootstrap helper-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/js/bootstrap-formhelpers.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/css/bootstrap-formhelpers.css" rel="stylesheet">
+
+</head>
+<body>
+<!-- Modal content-->
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" ng-click="$dismiss()">&times;</button>
+		<h4>Donor Sign Up form</h4>
+	</div>
+	<div class="modal-body clearfix">
+		<form ng-submit="registerDonor()">
+			<label><b>Name</b></label>
+			<input type="text" ng-model="donorSignupInfo.name" placeholder="Enter name"  required>
+
+			<label><b>Email</b></label>
+			<input type="email" ng-model="donorSignupInfo.username" placeholder="Enter email" name="email" required>
+
+			<label><b>Contact NO</b></label>
+	<input type="text" ng-model="donorSignupInfo.contact" placeholder="Enter Contact Number"  name="pNo" minlength="10" maxlength="10">
+
+			<label><b>Password </b></label>
+			<input type="password" ng-model="donorSignupInfo.password" placeholder="Enter Password" name="password" required>
+
+			<label><b>Confirm Password </b></label>
+			<input type="password" ng-model="donorSignupInfo.confirmPassword" placeholder="Re-enter Password" name="confirmPassword" required>
+			<span ng-hide="isSame(donorSignupInfo.password,donorSignupInfo.confirmPassword)">Passwords should match</span>
+        <fieldset>
+            <legend><b>Address :</b></legend>
+			<div id="countries_states2" class="bfh-selectbox bfh-countries" data-country="IN"></div>
+            <div class="bfh-selectbox bfh-states" data-country="countries_states2"></div>
+        </fieldset>
+        
+			<button type="submit" class="btn btn-lg btn-success btn-rounded outline pull-right" ng-disabled="showButtonDonor" ng-click="$close()">
+				SignUp
+			</button>
+		</form>
+<!--		<button id="close" data-dismiss="modal" class="btn btn-rounded pull-right">Close</button>-->
+	</div>
+</div>
+    </body>
+    </html>
