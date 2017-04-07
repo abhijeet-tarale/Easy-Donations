@@ -178,6 +178,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
     };
      $scope.postsModal = function () {
          console.log('inside posts modal function');
+         $scope.viewPosts();
         $modal.open({
             
             templateUrl : './views/postModal.html',
