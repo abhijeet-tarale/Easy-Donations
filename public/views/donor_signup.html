@@ -4,43 +4,53 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/js/bootstrap-formhelpers.min.js"></script>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/css/bootstrap-formhelpers.css" rel="stylesheet">
-
+<style>
+    .inputBox{
+     
+        webkit-border-radius: 5px;
+        moz-border-radius: 5px;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px black;
+    }
+</style>
 </head>
 <body>
 <!-- Modal content-->
 <div class="modal-content">
-	<div class="modal-header">
+	<!--<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" ng-click="$dismiss()">&times;</button>
 		<h4>Donor Sign Up form</h4>
-	</div>
+	</div>-->
 	<div class="modal-body clearfix">
 		<form ng-submit="registerDonor()">
 			<label><b>Name</b></label>
-			<input type="text" ng-model="donorSignupInfo.name" placeholder="Enter name"  required>
+			<input type="text" ng-model="donorSignupInfo.name" placeholder="Enter name"  class="inputBox" required>
 
 			<label><b>Email</b></label>
-			<input type="email" ng-model="donorSignupInfo.username" placeholder="Enter email" name="email" required>
+			<input type="email" ng-model="donorSignupInfo.username" placeholder="Enter email" name="email"  class="inputBox" required>
 
 			<label><b>Contact NO</b></label>
-	<input type="text" ng-model="donorSignupInfo.contact" placeholder="Enter Contact Number"  name="pNo" minlength="10" maxlength="10">
+	<input type="text" ng-model="donorSignupInfo.contact" placeholder="Enter Contact Number"  name="pNo" minlength="10" maxlength="10" class="inputBox" required>
 
 			<label><b>Password </b></label>
-			<input type="password" ng-model="donorSignupInfo.password" placeholder="Enter Password" name="password" required>
+			<input type="password" ng-model="donorSignupInfo.password" placeholder="Enter Password" name="password" class="inputBox" style="width:32%" required>
 
 			<label><b>Confirm Password </b></label>
-			<input type="password" ng-model="donorSignupInfo.confirmPassword" placeholder="Re-enter Password" name="confirmPassword" required>
+			<input type="password" ng-model="donorSignupInfo.confirmPassword" placeholder="Re-enter Password" name="confirmPassword" class="inputBox pull-right" style="width:31%" required>
 			<span ng-hide="isSame(donorSignupInfo.password,donorSignupInfo.confirmPassword)">Passwords should match</span>
         <fieldset>
             <legend><b>Address :</b></legend>
 			<div id="countries_states2" class="bfh-selectbox bfh-countries" data-country="IN"></div>
             <div class="bfh-selectbox bfh-states" data-country="countries_states2"></div>
         </fieldset>
-        
-			<button type="submit" class="btn btn-lg btn-success btn-rounded outline pull-right" ng-disabled="showButtonDonor" ng-click="$close()">
+         <div class="modal-footer">
+			<button type="submit" class="btn btn-lg btn-success btn-rounded outline pull-left" ng-disabled="showButtonDonor" ng-click="$close()">
 				SignUp
 			</button>
+            <button id="close" data-dismiss="modal" class="btn btn-rounded pull-right" ng-click="$dismiss()">Close</button>
+    </div>        
 		</form>
-<!--		<button id="close" data-dismiss="modal" class="btn btn-rounded pull-right">Close</button>-->
+		
 	</div>
 </div>
     </body>

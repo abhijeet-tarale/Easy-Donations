@@ -1,6 +1,6 @@
 var easyDonations=angular.module('easyDonations');
 
-easyDonations.controller('donationController',['$scope', '$http', '$sessionStorage', 'donationFactory','$timeout','$rootScope','$location', function($scope, $http, $sessionStorage, donationFactory,$timeout,$rootScope,$location){
+easyDonations.controller('donationController',['$scope', '$http', '$sessionStorage', 'donationFactory','$timeout','$rootScope','$location','$modal',function($scope, $http, $sessionStorage, donationFactory,$timeout,$rootScope,$location,$modal){
     
 	console.log("inside view donations controller");
     $scope.hidePostButton=true;
@@ -67,13 +67,14 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
         for(i in $scope.posts){
             for(j in $scope.donors){  
                 if($scope.posts[i].posted_by ==$scope.donors[j]._id){
-                    $scope.postDetails.push({"name":$scope.donors[j].name,"items":$scope.posts[i].items,"quantity":$scope.posts[i].quantity,"postedBy":$scope.posts[i].posted_by,"postId":$scope.posts[i]._id,"loaction":$scope.donors[j].address.city,"claims":$scope.posts[i].claims});
+                    $scope.postDetails.push({"name":$scope.donors[j].name,"items":$scope.posts[i].items,"quantity":$scope.posts[i].quantity,"postedBy":$scope.posts[i].posted_by,"postId":$scope.posts[i]._id,"claims":$scope.posts[i].claims});
                         
                     console.log("postDetails");                        
                 }
             }
         }        
     };
+    //"loaction":$scope.donors[j].address.city,
     
     getDonorById();
     getOrphanageById();
@@ -174,6 +175,15 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
                 console.log("Claim unsuccessful !");
 			});
         }
+    };
+     $scope.postsModal = function () {
+         console.log('inside posts modal function');
+        $modal.open({
+            
+            templateUrl : './views/postModal.html',
+            controller: 'donationController',
+            scope: $scope
+        });
     };
     
 }]);
