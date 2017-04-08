@@ -98,7 +98,7 @@
                     </li>
                     <li>
                         <!--<a class="page-scroll" href="#team">Team</a>-->
-                        <a class="page-scroll ngScroll" ng-show="authenticated && role=='ORPHANAGE'"ng-href="#viewdonation">View Donations</a>
+                        <a class="page-scroll ngScroll" ng-show="authenticated && role=='ORPHANAGE'" ng-href="#viewdonation">View Donations</a>
                     </li>
                     <li>
                         <a class="page-scroll" ng-href="#contact">Contact</a>
@@ -126,13 +126,13 @@
                 <div class="intro-heading">It's Nice To Meet You!</div>
                 <div class="col-md-6 col-md-offset-3 clearfix">
 					<a href="" ng-click="loadDonorSignUpModal()" ng-hide="authenticated">
-						<button class="btn btn-lg btn-warning outline pull-left" >
+						<button class="btn btn-lg btn-warning outline " >
 							Register to Donate
 						</button>
 					</a>
 
 					<a href="" ng-click="loadOrphanageSignUpModal()" ng-hide="authenticated">
-						<button class="btn btn-lg btn-warning outline pull-right" style="background">
+						<button class="btn btn-lg btn-warning outline " style="background">
 							Register Orphanage
 						</button>
 					</a>
@@ -243,6 +243,12 @@
         </div>
     </section>
 
+      <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
     <footer>
         <div class="container">
             <div class="row">

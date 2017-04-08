@@ -31,6 +31,8 @@ easyDonations.controller('mainController',['$scope','$modal','$http','statistics
         
         statisticsFactory.getStatistics().then(function(response){
           $scope.statistics = response.data;
+            console.log('staticts');
+            console.log(response);
         },function(error){
             console.log('Error: ' + response);
         });
