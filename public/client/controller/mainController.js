@@ -1,7 +1,7 @@
 var easyDonations=angular.module('easyDonations');
 easyDonations.controller('mainController',['$scope','$modal','$http','statisticsFactory',function($scope,$modal,$http,statisticsFactory){
     
-    console.log("Inside mainController");
+  //  console.log("Inside mainController");
     $scope.statistics;
     $scope.loadLoginModal = function () {
         $modal.open({
@@ -31,8 +31,8 @@ easyDonations.controller('mainController',['$scope','$modal','$http','statistics
         
         statisticsFactory.getStatistics().then(function(response){
           $scope.statistics = response.data;
-            console.log('staticts');
-            console.log(response);
+           // console.log('staticts');
+        //    console.log(response);
         },function(error){
             console.log('Error: ' + response);
         });

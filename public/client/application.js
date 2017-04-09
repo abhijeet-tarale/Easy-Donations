@@ -1,7 +1,5 @@
-var easyDonations=angular.module('easyDonations',['ngRoute','ngResource','ui.bootstrap', 'ngStorage']).run(function($rootScope,$http, $sessionStorage) {
-    console.log("inside application.js");
-    
-    console.log($sessionStorage.user);
+var easyDonations=angular.module('easyDonations',['ngRoute','ngResource','ui.bootstrap', 'ngStorage']).run(function($rootScope,$http, $sessionStorage) {   
+ //   console.log($sessionStorage.user);
     
     if($sessionStorage.user == undefined){
         $rootScope.authenticated = false;
