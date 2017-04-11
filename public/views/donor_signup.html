@@ -35,8 +35,8 @@
 			<label><b>Confirm Password </b></label>
 			<input type="password" ng-model="donorSignupInfo.confirmPassword" placeholder="Re-enter Password" name="confirmPassword" class="inputBox pull-right" ng-required>
 			<span ng-hide="isSame(donorSignupInfo.password,donorSignupInfo.confirmPassword)">Passwords should match</span>
-              <legend><b>Address :</b></legend>
-        <label>Select Country  </label><select class="crs-country" data-region-id="state">
+              <label><b>Address :</b></label>
+        <label>Select Country  </label><select class="crs-country" data-region-id="state" style="width:50%">
         </select><br/>
         <label>Select State  </label> <select id="state"></select>
          <div class="modal-footer">
