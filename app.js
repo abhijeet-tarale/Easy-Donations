@@ -18,7 +18,7 @@ var mongoose = require('mongoose');
 
 
 ///mongodb://localhost/easyDonations
-/*
+
 mongoose.connect('mongodb://localhost/easyDonations', function(err){
     // not getting printed on console
     if(err){
@@ -27,8 +27,8 @@ mongoose.connect('mongodb://localhost/easyDonations', function(err){
     }
      else
         console.log("connection successfull");  
-});*/
-var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
+});
+/*var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };       
  
 var mongodbUri = 'mongodb://abhijeet:abhi123@ds155490.mlab.com:55490/easydonations';
@@ -40,7 +40,7 @@ conn.on('error', console.error.bind(console, 'connection error:'));
  
 conn.once('open', function() {
   // Wait for the database connection to establish, then start the app.                         
-});
+});*/
 var app = express();
 
 // view engine setup

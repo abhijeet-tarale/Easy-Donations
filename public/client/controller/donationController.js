@@ -5,6 +5,8 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
 	//console.log("inside view donations controller");
     $scope.hidePostButton=true;
 	$scope.items = [];
+    $scope.PageSize=5;
+    $scope.currentPage=1;
     
 	if($sessionStorage.user){
 		// Only if Session is Set
@@ -45,7 +47,8 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
             $scope.postsOfDonor=response.data;
       //      console.log("DonorPosts object");
              $rootScope.numberOfPosts=Object.keys($scope.postsOfDonor).length;
-        //    console.log(response);
+        //    console.log(response);    
+            
           },function(error){
             console.log("Couldnot get donorPost data");});
     };
@@ -108,9 +111,15 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
         $scope.hidePostButton=true;		
     };		
     		
-    $scope.deletePost=function(id){		
+    $scope.deletePost=function(id,index){
+        
         donationFactory.deletePostById(id).then(function(response){		
-            $scope.deletedPost=response.data;	
+            $scope.deletedPost=response.data;
+            console.log(index);
+            console.log(id);
+            $scope.postsOfDonor.splice(index);
+            getPostsOfDonor();
+            $scope.viewPosts();
         },function(error){		
             console.log("Couldnot delete post");
             }
@@ -178,4 +187,10 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
     };
      
     
-}]);
+}]).filter('startFrom',function(){
+        return function(data,start){
+              if (!data || !data.length) { return; }
+        start = +start; //parse to int
+            return data.slice(start);
+        }
+    });

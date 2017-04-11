@@ -1,5 +1,6 @@
 <html>
 <head>
+    
 <script>
 $(document).ready(function() {
 $(".btn-pref .btn").click(function () {
@@ -160,7 +161,7 @@ $(".btn-pref .btn").click(function () {
     </div>
             
     </section>
-     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" >
         <div class="modal-content" ng-show="showPostError" >
             <div class="close-modal" data-dismiss="modal">
                 <div class="lr">
@@ -193,25 +194,25 @@ $(".btn-pref .btn").click(function () {
                 <div class="row">
                     <div class=" col-lg-12 col-lg-offset-2">
                         <div class="modal-body">
-                            <div class="panel panel-primary col-md-8"  ng-repeat="post in postsOfDonor"  ng-show="showPosts">
+                            <div class="panel panel-primary col-md-8"  ng-repeat="post in postsOfDonor | startFrom:(currentPage -1)*PageSize | limitTo:PageSize"  ng-show="showPosts">
                                 <div class="panel-heading" role="tab" id="headingOne">
                                   <h4 class="panel-title">
                                     <a role="button" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne{{$index}}" aria-expanded="true" aria-controls="collapseOne">
                                       <strong> Posted On:</strong> {{post.creation_date | date: 'dd-MM-yyyy'}}
                                         <strong>Expires On:</strong>{{post.expiry_date| date: 'dd-MM-yyyy'}}
-                                    </a>
+                                      </a>
                                   </h4>
                                 </div>
-                                <div id="collapseOne{{$index}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div id="collapseOne{{$index}}" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="headingOne">
                                   <div class="panel-body" >
                                      
                                     <strong>Items:</strong>
-                                    <div ng-repeat="item in post.items"> {{item.item}} - {{item.quantity}}</div>
-                                    
+                                    <div ng-repeat="item in post.items | startFrom:(currentPage -1)*PageSize | limitTo:PageSize "> {{item.item}} - {{item.quantity}}</div>
+                                     <pagination ng-show="post.items.length>5" total-items="post.items.length" ng-model="currentPage" items-per-page="PageSize"></pagination> 
                                   </div>
                                     <div class="panel-footer">
                                         <div class="btn-group" role="group" aria-label="...">
-                                         <button type="button" class="btn btn-danger btn-sm" ng-click="deletePost(post._id)"> Delete</button>
+                                         <button type="button" class="btn btn-danger btn-sm" ng-click="deletePost(post._id,$index)"> Delete</button>
 <!--
                                          <button type="button" class="btn btn-info btn-sm" ng-click="updatePost()"> Update</button>
 -->
@@ -221,6 +222,7 @@ $(".btn-pref .btn").click(function () {
                                     </div>
                                 </div>
                             </div>
+                              
                            <!-- <div class="col-md-4 col-sm-4 col-lg-12" ng-repeat="post in postsOfDonor" id="displayitem" ng-show="showPosts">
 
                                   <label> <h3>Post</h3></label>
@@ -238,7 +240,8 @@ $(".btn-pref .btn").click(function () {
                         </div>
                        
                     </div>
-                     
+                    
+                     <pagination total-items="postsOfDonor.length" ng-model="currentPage" items-per-page="PageSize"></pagination> 
                 </div>
             <div class="modal-footer">
              <button type="button" class="btn btn-danger center-block " data-dismiss="modal">Close</button>

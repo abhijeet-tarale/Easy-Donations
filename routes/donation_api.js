@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var Donation = mongoose.model('Donations');
 var Orphanage = mongoose.model('Orphanages');
 var express = require('express');
+var Posts = mongoose.model('Posts');
 var router = express.Router();
 
 //Used for routes that must be authenticated.
@@ -82,12 +83,11 @@ router.route('/donations/:id')
 router.route('/statistics')
 
     .get(function(req,res){
-        
+    
     var statistics;
-        Donation.count({},function(err,donationsMade){
-            Donation.find().distinct('donated_by', function(error, donors) {
-                
-            Orphanage.find().distinct('_id', function(error, orphanages) {
+        Posts.count({},function(err,donationsMade){
+            Posts.find().distinct('posted_by', function(error, donors) {
+                Orphanage.find().distinct('_id', function(error, orphanages) {
                     /*var temp={"donationsMade":donationsMade,"donors":donors.length,"orphanages":orphanages.length};
                     statistics=JSON.stringify(temp);
                     console.log("Statistics  : "+statistics);*/
